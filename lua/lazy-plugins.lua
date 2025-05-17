@@ -11,7 +11,8 @@
 -- NOTE: Here is where you install your plugins.
 local vscode = vim.g.vscode ~= nil
 
-require('lazy').setup({
+-- Create a single plugins table combining VSCode and non-VSCode plugins
+local plugins = {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
@@ -25,19 +26,8 @@ require('lazy').setup({
   -- modular approach: using `require 'path/name'` will
   -- include a plugin definition from file lua/path/name.lua
 
-  -- Plugins that should only load when not in VSCode
-  not vscode and {
-    require 'kickstart/plugins/gitsigns',
-    require 'kickstart/plugins/which-key',
-    require 'kickstart/plugins/telescope',
-    require 'kickstart/plugins/lspconfig',
-    require 'kickstart/plugins/mini',
-    require 'kickstart/plugins/todo-comments',
-    require 'kickstart/plugins/conform',
-    require 'kickstart/plugins/blink-cmp',
-    require 'kickstart/plugins/treesitter',
-  } or nil,
-  
+  require 'kickstart/plugins/mini',
+
   require 'kickstart/plugins/catppuccin',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -65,7 +55,28 @@ require('lazy').setup({
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
-}, {
+}
+
+-- Add plugins that should only load when not in VSCode
+if not vscode then
+  -- Plugins that should only load when not in VSCode
+  local non_vscode_plugins = {
+    'kickstart/plugins/gitsigns',
+    'kickstart/plugins/which-key',
+    'kickstart/plugins/telescope',
+    'kickstart/plugins/lspconfig',
+    'kickstart/plugins/todo-comments',
+    'kickstart/plugins/conform',
+    'kickstart/plugins/blink-cmp',
+    'kickstart/plugins/treesitter',
+  }
+  for _, name in ipairs(non_vscode_plugins) do
+    table.insert(plugins, require(name))
+  end
+end
+
+-- Single setup call with all plugins
+require('lazy').setup(plugins, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
