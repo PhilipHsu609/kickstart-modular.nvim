@@ -35,6 +35,23 @@ else
   -- VSCode keymaps
   local code = require 'vscode'
 
+  -- Navigations
+  vim.keymap.set('n', '<C-h>', function()
+    code.action 'workbench.action.previousEditor'
+  end, { desc = 'Move focus to the left window' })
+
+  vim.keymap.set('n', '<C-l>', function()
+    code.action 'workbench.action.nextEditor'
+  end, { desc = 'Move focus to the right window' })
+
+  vim.keymap.set('n', '<leader>wt', function()
+    code.call 'workbench.view.testing.focus'
+  end, { desc = 'Move focus to the testing view' })
+
+  vim.keymap.set('n', '<leader>we', function()
+    code.call 'workbench.view.explorer'
+  end, { desc = 'Move focus to the explorer view' })
+
   -- Implementation
   vim.keymap.set('n', 'gi', function()
     code.action 'editor.action.goToImplementation'
