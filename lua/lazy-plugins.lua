@@ -27,9 +27,7 @@ local plugins = {
   -- include a plugin definition from file lua/path/name.lua
 
   require 'kickstart/plugins/which-key',
-
   require 'kickstart/plugins/mini',
-
   require 'kickstart/plugins/catppuccin',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -63,17 +61,16 @@ local plugins = {
 if not vscode then
   -- Plugins that should only load when not in VSCode
   local non_vscode_plugins = {
-    'kickstart/plugins/gitsigns',
-    'kickstart/plugins/which-key',
-    'kickstart/plugins/telescope',
-    'kickstart/plugins/lspconfig',
-    'kickstart/plugins/todo-comments',
-    'kickstart/plugins/conform',
-    'kickstart/plugins/blink-cmp',
-    'kickstart/plugins/treesitter',
+    require 'kickstart/plugins/gitsigns',
+    require 'kickstart/plugins/telescope',
+    require 'kickstart/plugins/lspconfig',
+    require 'kickstart/plugins/todo-comments',
+    require 'kickstart/plugins/conform',
+    require 'kickstart/plugins/blink-cmp',
+    require 'kickstart/plugins/treesitter',
   }
-  for _, name in ipairs(non_vscode_plugins) do
-    table.insert(plugins, require(name))
+  for _, plugin in ipairs(non_vscode_plugins) do
+    table.insert(plugins, plugin)
   end
 end
 
