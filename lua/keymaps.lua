@@ -52,6 +52,10 @@ else
     code.call 'workbench.view.explorer'
   end, { desc = 'Move focus to the explorer view' })
 
+  vim.keymap.set('n', '<leader>q', function()
+    code.action 'workbench.action.closeActiveEditor'
+  end, { desc = 'Close active editor' })
+
   -- Implementation
   vim.keymap.set('n', 'gi', function()
     code.action 'editor.action.goToImplementation'
