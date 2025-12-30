@@ -53,9 +53,28 @@ end)
 -- Reference
 vim.keymap.set('n', 'gr', function()
   code.action 'editor.action.goToReferences'
-end)
+end, { desc = 'Go to [R]eferences' })
 vim.keymap.set('n', 'gR', function()
   code.action 'editor.action.referenceSearch.trigger'
-end)
+end, { desc = '[R]eference search' })
+
+-- ============================================================================
+-- Search Commands (Telescope equivalents)
+-- ============================================================================
+
+-- Search text in files
+vim.keymap.set('n', '<leader>st', function()
+  code.action 'workbench.action.quickTextSearch'
+end, { desc = '[S]earch [T]ext' })
+
+-- Search symbols in workspace
+vim.keymap.set('n', '<leader>ss', function()
+  code.action 'workbench.action.showAllSymbols'
+end, { desc = '[S]earch [S]ymbols' })
+
+-- Find buffers (recent editors)
+vim.keymap.set('n', '<leader><leader>', function()
+  code.action 'workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup'
+end, { desc = '[ ] Find existing buffers' })
 
 -- vim: ts=2 sts=2 sw=2 et
