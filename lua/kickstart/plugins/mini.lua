@@ -17,6 +17,13 @@ return {
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      -- Simple and easy comment toggling
+      --
+      -- - gcc - Toggle line comment
+      -- - gc{motion} - Toggle comment on motion (e.g., gcap for paragraph)
+      -- - gc in visual mode - Toggle comment on selection
+      require('mini.comment').setup()
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin

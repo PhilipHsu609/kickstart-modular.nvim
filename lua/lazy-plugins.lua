@@ -28,7 +28,7 @@ local plugins = {
 
   require 'kickstart/plugins/which-key',
   require 'kickstart/plugins/mini',
-  require 'kickstart/plugins/catppuccin',
+  require 'kickstart/plugins/leap',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -61,6 +61,7 @@ local plugins = {
 if not vscode then
   -- Plugins that should only load when not in VSCode
   local non_vscode_plugins = {
+    require 'kickstart/plugins/catppuccin',
     require 'kickstart/plugins/gitsigns',
     require 'kickstart/plugins/telescope',
     require 'kickstart/plugins/lspconfig',
