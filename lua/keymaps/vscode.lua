@@ -22,6 +22,11 @@ vim.keymap.set('n', '<C-k>', function()
   code.action 'workbench.action.navigateUp'
 end, { desc = 'Navigate to editor group above' })
 
+-- Focus back to editor from panels (sidebar, terminal, etc.)
+vim.keymap.set('n', '<C-w><C-w>', function()
+  code.action 'workbench.action.focusActiveEditorGroup'
+end, { desc = 'Focus editor group (escape from panels)' })
+
 vim.keymap.set('n', '<leader>wt', function()
   code.call 'workbench.view.testing.focus'
 end, { desc = 'Move focus to the testing view' })
@@ -29,6 +34,10 @@ end, { desc = 'Move focus to the testing view' })
 vim.keymap.set('n', '<leader>we', function()
   code.call 'workbench.view.explorer'
 end, { desc = 'Move focus to the explorer view' })
+
+vim.keymap.set('n', '<leader>r', function()
+  code.call 'workbench.action.openRecent'
+end, { desc = 'Open recent...' })
 
 vim.keymap.set('n', '<leader>q', function()
   code.action 'workbench.action.closeActiveEditor'
