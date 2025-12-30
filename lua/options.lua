@@ -26,6 +26,12 @@ end)
 -- Enable break indent
 vim.o.breakindent = true
 
+-- Default to spaces instead of tabs
+vim.o.expandtab = true -- Use spaces instead of tabs
+vim.o.tabstop = 4 -- Number of spaces a <Tab> counts for
+vim.o.shiftwidth = 4 -- Number of spaces for each indent
+vim.o.softtabstop = 4 -- Number of spaces for <Tab> in insert mode
+
 -- Save undo history
 vim.o.undofile = true
 

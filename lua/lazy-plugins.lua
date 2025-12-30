@@ -14,19 +14,14 @@ local vscode = vim.g.vscode ~= nil
 -- Create a single plugins table combining VSCode and non-VSCode plugins
 local plugins = {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
-
-  -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
   --
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
-  --
 
   -- modular approach: using `require 'path/name'` will
   -- include a plugin definition from file lua/path/name.lua
 
-  require 'kickstart/plugins/which-key',
   require 'kickstart/plugins/mini',
   require 'kickstart/plugins/leap',
 
@@ -61,6 +56,11 @@ local plugins = {
 if not vscode then
   -- Plugins that should only load when not in VSCode
   local non_vscode_plugins = {
+    {
+      'NMAC427/guess-indent.nvim',
+      opts = {}, -- Auto-detect indentation
+    },
+    require 'kickstart/plugins/which-key',
     require 'kickstart/plugins/catppuccin',
     require 'kickstart/plugins/gitsigns',
     require 'kickstart/plugins/telescope',
