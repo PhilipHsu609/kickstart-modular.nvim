@@ -5,14 +5,22 @@
 -- VSCode keymaps
 local code = require 'vscode'
 
--- Navigations
+-- Editor Group Navigation (matches Neovim window navigation)
 vim.keymap.set('n', '<C-h>', function()
-  code.action 'workbench.action.previousEditor'
-end, { desc = 'Move focus to the left window' })
+  code.action 'workbench.action.navigateLeft'
+end, { desc = 'Navigate to left editor group' })
 
 vim.keymap.set('n', '<C-l>', function()
-  code.action 'workbench.action.nextEditor'
-end, { desc = 'Move focus to the right window' })
+  code.action 'workbench.action.navigateRight'
+end, { desc = 'Navigate to right editor group' })
+
+vim.keymap.set('n', '<C-j>', function()
+  code.action 'workbench.action.navigateDown'
+end, { desc = 'Navigate to editor group below' })
+
+vim.keymap.set('n', '<C-k>', function()
+  code.action 'workbench.action.navigateUp'
+end, { desc = 'Navigate to editor group above' })
 
 vim.keymap.set('n', '<leader>wt', function()
   code.call 'workbench.view.testing.focus'
