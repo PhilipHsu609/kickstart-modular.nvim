@@ -1,6 +1,6 @@
 return {
   {
-    'ggandor/leap.nvim',
+    url = 'https://codeberg.org/andyg/leap.nvim',
     config = function()
       -- Enable leap in both Neovim and VSCode-Neovim
       -- Provides fast 2-character search motion
