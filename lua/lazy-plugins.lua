@@ -51,6 +51,8 @@ local plugins = {
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
+
+  require 'kickstart.plugins.lazygit'
 }
 
 -- Add plugins that should only load when not in VSCode
