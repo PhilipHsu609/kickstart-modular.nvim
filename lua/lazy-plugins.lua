@@ -40,18 +40,19 @@ local plugins = {
     'NMAC427/guess-indent.nvim',
     opts = {}, -- Auto-detect indentation
   },
-  require 'kickstart/plugins/mini',
-  require 'kickstart/plugins/leap',
-  require 'kickstart.plugins.neo-tree',
-  require 'kickstart/plugins/which-key',
-  require 'kickstart/plugins/catppuccin',
-  require 'kickstart/plugins/gitsigns',
-  require 'kickstart/plugins/telescope',
-  require 'kickstart/plugins/lspconfig',
-  require 'kickstart/plugins/todo-comments',
-  require 'kickstart/plugins/conform',
   require 'kickstart/plugins/blink-cmp',
+  require 'kickstart/plugins/catppuccin',
+  require 'kickstart/plugins/conform',
+  require 'kickstart/plugins/gitsigns',
+  require 'kickstart/plugins/lazygit',
+  require 'kickstart/plugins/leap',
+  require 'kickstart/plugins/lspconfig',
+  require 'kickstart/plugins/mini',
+  require 'kickstart/plugins/neo-tree',
+  require 'kickstart/plugins/telescope',
+  require 'kickstart/plugins/todo-comments',
   require 'kickstart/plugins/treesitter',
+  require 'kickstart/plugins/which-key',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -63,8 +64,6 @@ local plugins = {
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
-
-  require 'kickstart.plugins.lazygit'
 }
 
 -- Single setup call with all plugins
