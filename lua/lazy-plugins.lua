@@ -9,7 +9,6 @@
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-local vscode = vim.g.vscode ~= nil
 
 -- Create a single plugins table combining VSCode and non-VSCode plugins
 local plugins = {
@@ -22,9 +21,6 @@ local plugins = {
 
   -- modular approach: using `require 'path.name'` will
   -- include a plugin definition from file lua/path/name.lua
-
-  require 'kickstart/plugins/mini',
-  require 'kickstart/plugins/leap',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -39,7 +35,23 @@ local plugins = {
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
+
+  {
+    'NMAC427/guess-indent.nvim',
+    opts = {}, -- Auto-detect indentation
+  },
+  require 'kickstart/plugins/mini',
+  require 'kickstart/plugins/leap',
   require 'kickstart.plugins.neo-tree',
+  require 'kickstart/plugins/which-key',
+  require 'kickstart/plugins/catppuccin',
+  require 'kickstart/plugins/gitsigns',
+  require 'kickstart/plugins/telescope',
+  require 'kickstart/plugins/lspconfig',
+  require 'kickstart/plugins/todo-comments',
+  require 'kickstart/plugins/conform',
+  require 'kickstart/plugins/blink-cmp',
+  require 'kickstart/plugins/treesitter',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -54,29 +66,6 @@ local plugins = {
 
   require 'kickstart.plugins.lazygit'
 }
-
--- Add plugins that should only load when not in VSCode
-if not vscode then
-  -- Plugins that should only load when not in VSCode
-  local non_vscode_plugins = {
-    {
-      'NMAC427/guess-indent.nvim',
-      opts = {}, -- Auto-detect indentation
-    },
-    require 'kickstart/plugins/which-key',
-    require 'kickstart/plugins/catppuccin',
-    require 'kickstart/plugins/gitsigns',
-    require 'kickstart/plugins/telescope',
-    require 'kickstart/plugins/lspconfig',
-    require 'kickstart/plugins/todo-comments',
-    require 'kickstart/plugins/conform',
-    require 'kickstart/plugins/blink-cmp',
-    require 'kickstart/plugins/treesitter',
-  }
-  for _, plugin in ipairs(non_vscode_plugins) do
-    table.insert(plugins, plugin)
-  end
-end
 
 -- Single setup call with all plugins
 require('lazy').setup(plugins, {
