@@ -28,7 +28,12 @@ return {
           --   end,
           -- },
         },
-        opts = {},
+        opts = {
+          -- Leave the snippet session once the cursor exits it / the text is deleted,
+          -- otherwise <Tab> keeps jumping to stale tabstops instead of indenting.
+          region_check_events = 'CursorMoved',
+          delete_check_events = 'TextChanged',
+        },
       },
     },
     ---@module 'blink.cmp'
