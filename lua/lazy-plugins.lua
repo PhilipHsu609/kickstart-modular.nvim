@@ -51,6 +51,7 @@ local plugins = {
   require 'kickstart/plugins/neo-tree',
   require 'kickstart/plugins/telescope',
   require 'kickstart/plugins/todo-comments',
+  require 'kickstart/plugins/toggleterm',
   require 'kickstart/plugins/treesitter',
   require 'kickstart/plugins/which-key',
 
