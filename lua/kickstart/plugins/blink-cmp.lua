@@ -63,6 +63,12 @@ return {
         -- See :h blink-cmp-config-keymap for defining your own keymap
         preset = 'default',
 
+        -- Tab / S-Tab move through the menu (or snippet tabstops); otherwise Tab indents as usual.
+        ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+        -- Enter accepts only an item you navigated to (see preselect = false below); otherwise a newline.
+        ['<CR>'] = { 'accept', 'fallback' },
+
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
@@ -74,6 +80,7 @@ return {
       },
 
       completion = {
+        list = { selection = { preselect = false, auto_insert = false } },
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
